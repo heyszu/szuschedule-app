@@ -2,7 +2,7 @@
 
 这是一款专为深大同学开发的课表 App，由这很深大公众号团队开发。并且将源代码开源。
 
-本 App 是用 Cordova 搭建的 Hybrid App，App 端采用了 Vue+Vue-Router+Vuex 的搭配。
+本 App 是用 **Cordova** 搭建的 Hybrid App，App 端采用了` Vue + Vue-Router + Vuex` 的搭配，服务器端采用` NodeJS + MySQL`，服务器端闭源。
 
 ## 使用
 
@@ -68,6 +68,10 @@
 ```bash
 cordova build android
 ```
+
+## BUG 反馈
+
+欢迎发 [Issues](https://github.com/heyszu/szuschedule-app/issues) 反馈 Bug，你也可以 fork 本项目，修复 Bug 后 PR 我们。
 
 ## 开源证书
 
