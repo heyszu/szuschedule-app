@@ -1,0 +1,13 @@
+# keystore
+iszu.schedule.keystore
+
+# Weixin Config
+config.json
+
+# Node Module
+app/node_modules/
+app/npm-debug.log
+npm-debug.log
+
+# Others
+.DS_Store

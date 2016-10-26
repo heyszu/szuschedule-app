@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.iszucn.szuschedule" version="0.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="StatusBar">
+        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Wechat">
+        <param name="android-package" value="xu.li.cordova.wechat.Wechat" />
+    </feature>
+    <name>深大课表</name>
+    <description>
+        深大课表 - 深大人的课表助手
+    </description>
+    <author email="jason@iszu.cn" href="http://blog.ijason.cc">
+        Jason
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="market:*" />
+    <icon density="ldpi" src="res/android/icon36.png" />
+    <icon density="mdpi" src="res/android/icon48.png" />
+    <icon density="hdpi" src="res/android/icon72.png" />
+    <icon density="xhdpi" src="res/android/icon96.png" />
+    <icon density="xxhdpi" src="res/android/icon144.png" />
+    <icon density="xxxhdpi" src="res/android/icon192.png" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="WECHATAPPID" value="12er" />
+</widget>

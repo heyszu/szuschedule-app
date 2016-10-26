@@ -1,0 +1,18 @@
+{
+  "android": {
+    "debug": {
+      "keystore": "iszu.schedule.keystore",
+      "storePassword": "szuwiki",
+      "alias": "iszu.schedule.keystore",
+      "password": "szuwiki",
+      "keystoreType": ""
+    },
+    "release": {
+      "keystore": "iszu.schedule.keystore",
+      "storePassword": "szuwiki",
+      "alias": "iszu.schedule.keystore",
+      "password": "szuwiki",
+      "keystoreType": ""
+    }
+  }
+}

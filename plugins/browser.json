@@ -1,0 +1,25 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-browsersync": {
+            "PACKAGE_NAME": "cn.iszu.szuhelper"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "cn.iszu.szuhelper"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "cn.iszu.szuhelper"
+        },
+        "cordova-plugin-wechat": {
+            "WECHATAPPID": "12er",
+            "PACKAGE_NAME": "cn.iszu.szuhelper"
+        }
+    },
+    "dependent_plugins": {}
+}

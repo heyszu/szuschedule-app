@@ -1,0 +1,9 @@
+{
+    "AudioToolbox.framework": 2,
+    "libz.tbd": 1,
+    "libsqlite3.0.tbd": 1,
+    "CoreTelephony.framework": 1,
+    "SystemConfiguration.framework": 1,
+    "Security.framework": 1,
+    "libstdc++.6.tbd": 1
+}
