@@ -24,7 +24,7 @@ html {
     height: 100%;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: #222;
-    font-size: 14px;
+    font-size: 10px;
     line-height: 1.4;
     padding: 0;
     display: flex;

@@ -213,7 +213,7 @@ header {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
-    width: 50%;
+    width: 40%;
     background: #FFF;
     z-index: 102;
     border-radius: 4px;
