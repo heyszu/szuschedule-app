@@ -117,6 +117,7 @@ export default {
             const schedule = this.$store.state.schedule
             const template = ['一', '二', '三', '四', '五']
 
+            // TODO: migrate to VM instead of oprate DOM directly
             Object.keys(schedule).forEach(weekDay => {
                 let day = document.getElementById('day' + weekDay)
                 let today = schedule[weekDay]
