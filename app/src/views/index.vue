@@ -5,7 +5,7 @@
                 <path d="M0 0h24v24H0z" fill="none"/>
                 <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
             </svg> -->
-            <p onclick="toggleDrawer()">深大课表</p>
+            <p @click="changeWeekType()">{{ singleWeekChanged }}</p>
             <!-- <svg class="searchBtn" fill="#FFFFFF" height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
                 <path d="M0 0h24v24H0z" fill="none"/>
@@ -76,6 +76,7 @@ import timett from '../assets/timeToType'
 export default {
     data () {
         return {
+            singleWeek: true,
             menuOpen: false
         }
     },
@@ -84,42 +85,51 @@ export default {
             this.$router.push('login')
             return
         }
+
+        this.singleWeek = (this.getWeek() === 1)
+
         if (Object.keys(this.$store.state.schedule).length === 0) {
             try {
                 await this.$store.dispatch('updateSchedule', this.$store.state.loginState.login_ticket)
                 this.renderSchedule()
             } catch (e) {
-                console.log(1)
+                navigator.notification.alert('可能有什么问题发生了！请重启软件把。', function () {}, '阿偶', '好吧...')
             }
         } else {
             this.renderSchedule()
         }
     },
+    watch: {
+        singleWeek () {
+            this.renderSchedule()
+        }
+    },
+    computed: {
+        singleWeekChanged () {
+            return (this.singleWeek) ? '单周' : '双周'
+        }
+    },
     methods: {
-        callWechatLogin () {
-            const scope = 'snsapi_userinfo'
-            const state = '_' + (+new Date())
-            window.Wechat.auth(scope, state, function (response) {
-                navigator.notification.beep(JSON.stringify(response))
-            }, function (reason) {
-                navigator.notification.beep('拉起微信登陆失败：' + reason)
-            })
+        changeWeekType () {
+            this.singleWeek = !this.singleWeek
         },
         renderSchedule () {
             const schedule = this.$store.state.schedule
-            // console.log(schedule)
+            const template = ['一', '二', '三', '四', '五']
+
             Object.keys(schedule).forEach(weekDay => {
                 let day = document.getElementById('day' + weekDay)
                 let today = schedule[weekDay]
 
                 if (today.length === 0) {
-                    day.innerHTML = day.innerHTML + this.spaceDom(12)
+                    day.innerHTML = `<div class="class head"><p>${template[weekDay - 1]}</p></div>` + this.spaceDom(12)
                 } else {
                     let todayCountClass = 0
 
                     let DOM = today.map((cur, index) => {
                         let time = this.typeToTime(cur.section_order)
-                        if ((cur.odd_even_week % 2) !== this.getWeek() && cur.odd_even_week !== 3) {
+                        let isSingleWeek = (cur.odd_even_week === 2)
+                        if (isSingleWeek === this.singleWeek && cur.odd_even_week !== 3) {
                             return ''
                         } else {
                             let res = this.spaceDom(time.offset - todayCountClass) + this.classDom(cur.section_order, cur.course_name, cur.class_location, cur.id, weekDay)
@@ -137,7 +147,7 @@ export default {
                         DOM += this.spaceDom(12 - todayCountClass)
                     }
 
-                    day.innerHTML = day.innerHTML + DOM
+                    day.innerHTML = `<div class="class head"><p>${template[weekDay - 1]}</p></div>` + DOM
                 }
             })
 
@@ -286,6 +296,7 @@ header {
             display: flex;
             align-items: center;
             word-break: break-all;
+            transition: all 200ms;
             overflow: hidden;
 
             p {
