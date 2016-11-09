@@ -2,11 +2,18 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>iszu</title>
-    <link href="./static/css/app.25ce96f5916d7c45284405632fc01fda.css" rel="stylesheet"></head>
+        <title>深大课表</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <link href="./static/css/app.670fd58c1396dad89bb3e6d881931eff.css" rel="stylesheet"></head>
     <body>
         <div id="app"></div>
-        <script src="cordova.js"></script>
         
-    <script type="text/javascript" src="./static/js/manifest.7d9df2921d29b526dffe.js"></script><script type="text/javascript" src="./static/js/vendor.5cbd98636b608b94bba2.js"></script><script type="text/javascript" src="./static/js/app.28a44d22aed2526ffa3c.js"></script></body>
+        <script src="cordova.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('deviceready', function () {
+                // 状态栏颜色
+                StatusBar.backgroundColorByHexString('#4f77b4')
+            }, false)
+        </script>
+    <script type="text/javascript" src="./static/js/manifest.3da7416d1e81eae08d9a.js"></script><script type="text/javascript" src="./static/js/vendor.30aecf8a4b329de0432c.js"></script><script type="text/javascript" src="./static/js/app.33bc7707fc71ee26ec57.js"></script></body>
 </html>

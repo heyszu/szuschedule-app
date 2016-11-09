@@ -41,15 +41,15 @@ export default {
     methods: {
         getSchedule () {
             if (!this.stuInfo.stu_no) {
-                navigator.notification.alert('请输入学号！', function () {})
+                navigator.notification.alert('请输入学号！', function () {}, '阿偶', '好吧...')
                 return
             }
             if (!this.stuInfo.stu_no) {
-                navigator.notification.alert('请输入姓名！', function () {})
+                navigator.notification.alert('请输入姓名！', function () {}, '阿偶', '好吧...')
                 return
             }
             if (isNaN(parseInt(this.stuInfo.stu_no)) || this.stuInfo.stu_no.length !== 10) {
-                navigator.notification.alert('请输入正确的学号！', function () {})
+                navigator.notification.alert('请输入正确的学号！', function () {}, '阿偶', '好吧...')
                 return
             }
             this.$http.post(config.api + '/scheduleprelogin', {
@@ -74,12 +74,12 @@ export default {
                     this.$router.push({ name: 'index' })
                     return
                 } else if (res.data.status === 201) {
-                    navigator.notification.alert('学号和姓名不匹配！', function () {})
+                    navigator.notification.alert('学号和姓名不匹配！', function () {}, '阿偶', '好吧...')
                 } else {
-                    navigator.notification.alert('未知错误', function () {})
+                    navigator.notification.alert('未知错误', function () {}, '阿偶', '好吧...')
                 }
             }, e => {
-                navigator.notification.alert('网络无连接或服务器错误，请稍后重试。', function () {})
+                navigator.notification.alert('网络无连接或服务器错误，请稍后重试。', function () {}, '网络错误', '好吧...')
             })
         }
     }
