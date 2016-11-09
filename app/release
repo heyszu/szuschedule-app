@@ -1,0 +1,15 @@
+#!/bin/bash
+echo " Copy file..."
+
+while [ ! -d "dist" ]
+do
+	sleep 5
+done
+
+cp -rf dist/static      ../www
+cp -r  dist/index.html  ../www
+
+cp -rf dist/static      ../platforms/ios/www
+cp -r  dist/index.html  ../platforms/ios/www
+
+echo " Build complete!"
