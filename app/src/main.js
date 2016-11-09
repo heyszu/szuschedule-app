@@ -3,12 +3,15 @@ import App from './App'
 import store from './vuex'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
+import VueTap from 'v-tap'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
+Vue.use(VueTap)
 
 // import views
-import index from './views/index'
+// import index from './views/index'
+import index from './views/new'
 import login from './views/login'
 
 const routes = [{

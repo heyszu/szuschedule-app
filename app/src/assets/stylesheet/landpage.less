@@ -1,0 +1,86 @@
+#landpage {
+    width: 100%;
+    min-height: 100%;
+
+    background: #FFF;
+
+    display: flex;
+    flex-direction: column;
+
+    .schedule {
+        width: 100%;
+        padding: 0 4px;
+
+        display: flex;
+
+        .col {
+            width: 100%;
+            margin: 1px;
+
+            display: flex;
+            flex-direction: column;
+
+            .class {
+                width: 100%;
+                height: 46px;
+                margin: 1px;
+                padding: 5px;
+
+                text-align: center;
+                border-radius: 2px;
+
+                display: flex;
+                align-items: center;
+
+                transition: all 200ms;
+
+                word-break: break-all;
+                overflow: hidden;
+
+                p {
+                    width: 100%;
+                    display: block;
+                }
+            }
+
+            .head {
+                height: 32px;
+                opacity: .5;
+                background: rgba(94, 142, 214, 0.1);
+            }
+
+            .title {
+                font-weight: bold;
+                opacity: .5;
+                background: rgba(94, 142, 214, 0.1);
+            }
+
+            .normal {
+                font-size: 12px;
+                line-height: 16px;
+                color: #FFF;
+                background: #5e8ed6;
+            }
+
+            .empty {
+                background: rgba(94, 142, 214, 0.05);
+            }
+
+            .type10, .type12, .type20, .type30, .type40, .type47, .type50, .type60 {
+                height: 94px;
+            }
+
+            .type11, .type15, .type31, .type35, .type53, .type56 {
+                height: 142px;
+            }
+
+            .type21, .type25, .type41, .type44 {
+                height: 190px;
+            }
+        }
+
+        .col1 {
+            width: 70%;
+        }
+    }
+}

@@ -10,6 +10,8 @@ export default {
 </script>
 
 <style lang="less">
+@import './assets/iconfont/material-icons.css';
+
 * {
     padding: 0;
     margin: 0;
