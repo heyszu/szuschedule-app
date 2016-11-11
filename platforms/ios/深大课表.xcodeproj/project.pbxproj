@@ -20,6 +20,7 @@
 		6C11DB1C50D3409BAA14414F /* CDVWechat.m in Sources */ = {isa = PBXBuildFile; fileRef = E62D31A3FE774700A8B18428 /* CDVWechat.m */; };
 		7106EFEC12434BB6ABD87660 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 68DD7B38816B47148D8AD1CE /* libsqlite3.0.tbd */; };
 		813A9DB90FB24114B2E0383A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23258239CBCE464588F10D15 /* CoreTelephony.framework */; };
+		96F6BA201DD395FD00B1A367 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = EB87FDF41871DAF40020F90C /* config.xml */; };
 		9AEB6EDF72204CBDAB4A6D48 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CD6B3E7A664ECABED59192 /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B950F9A5DD214B85BEE47B81 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B68A6CF5844E2299DF5860 /* Security.framework */; };
 		CD97996A4AAA4C02AA7A0A62 /* CDVNotification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E3384CB866824420A8EB32B9 /* CDVNotification.bundle */; };
@@ -250,7 +251,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 810;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = 7VAZ48FJAN;
@@ -297,6 +298,7 @@
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
 				0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */,
 				CD97996A4AAA4C02AA7A0A62 /* CDVNotification.bundle in Resources */,
+				96F6BA201DD395FD00B1A367 /* config.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
