@@ -1,0 +1,164 @@
+.detail-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    pointer-events: auto;
+
+    .detail {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+
+        width: 100%;
+        height: 300px;
+
+        padding: 10px;
+        
+        transform: translateY(100%);
+        transition: transform 300ms cubic-bezier(0.33,-0.01, 0.35, 1.01);
+
+        z-index: 10;
+
+        .main-content {
+            width: 100%;
+            height: 100%;
+
+            background: rgba(255,255,255,.95);
+            
+            border-radius: 6px;
+            box-shadow: 0 3px 7px rgba(0,0,0,.3);
+
+            display: flex;
+
+            flex-direction: column;
+
+            .colorPicker {
+                width: 100%;
+                padding: 30px 20px;
+                padding-bottom: 20px;
+
+                display: flex;
+                justify-content: space-around;
+                
+                .itemContainer {
+                    width: 25%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .item {
+                        width: 19px;
+                        height: 19px;
+
+                        border-radius: 50%;
+                    }
+                }
+                
+                .checked:after {
+                    position: relative;
+                    left: -5px;
+                    top: -5px;
+
+                    width: 27px;
+                    height: 27px;
+
+                    content: '';
+                    display: block;
+                    
+                    border-radius: 50%;
+                    border: 1px solid #ccc;
+                }
+            }
+
+            .course_name {
+                text-align: center;
+                font-size: 18px;
+                font-weight: normal;
+                line-height: 42px;
+                color: #333;
+            }
+
+            .professor {
+                color: #666;
+                text-align: center;
+            }
+
+            .classInfo {
+                width: 100%;
+                height: 100%;
+
+                padding: 20px;
+
+                display: flex;
+
+                .localImage {
+                    margin-right: 10px;
+
+                    width: 50%;
+                    height: 120px;
+
+                    background-color: #ccc;
+                    background-size: cover;
+                    background-position: center;
+
+                    border-radius: 4px;
+
+                    overflow: hidden;
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+
+                    .location {
+                        padding: 5px;
+
+                        color: #FFF;
+                        background: rgba(0,0,0,.8);
+
+                        text-align: center;
+                    }
+                }
+
+                .infomations {
+                    width: 50%;
+
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    text-align: left;
+
+                    p {
+                        color: #444;
+                        font-size: 12px;
+                        line-height: 22px;
+                        
+                        span {
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .slideIn {
+        transform: translateY(0);
+    }
+
+    .mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        background: transparent;
+
+        z-index: 9;
+    }
+}

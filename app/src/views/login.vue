@@ -134,6 +134,7 @@ export default {
             color: #444;
             line-height: 50px;
             box-shadow: 0 4px 10px rgba(0,0,0,.2);
+            -webkit-appearance: none;
 
             &:first-child {
                 border-radius: 3px 3px 0 0;

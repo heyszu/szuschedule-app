@@ -23,7 +23,7 @@ const container = () => {
 const trimSchedule = s => {
     return Object.keys(s).map(i => {
         return s[i].map(dayItem => {
-            const _id = '_' + _.md5(dayItem.id + dayItem.course_name + dayItem.class_location + dayItem.odd_even_week).substr(0, 7)
+            const _id = '_' + _.md5(dayItem.id + dayItem.course_name + dayItem.class_location + dayItem.section_order + dayItem.odd_even_week).substr(0, 7)
             window.localStorage.setItem(_id, JSON.stringify(dayItem))
             return {
                 _id,

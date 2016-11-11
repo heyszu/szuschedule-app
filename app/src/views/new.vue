@@ -1,6 +1,6 @@
 <template>
     <div id="landpage">
-        <s-header />
+        <s-header :weekOdd="week_odd" @switchSingleWeek="switchSingleWeek"/>
         <div class="schedule">
             <div class="col col1">
                 <!-- Render left list -->
@@ -16,17 +16,24 @@
                     :class="{
                         empty: item.empty,
                         normalClass: !item.empty,
-                        ['type' + item.classInfo.section_order]: true }"
-                    v-tap="{ methods:showDetail , _id: item._id }">
-                    <p v-if="!item.empty">{{ item.classInfo.course_name }}<br />@{{ '' + item.classInfo.class_location }}</p>
+                        ['type' + item.classInfo.section_order]: true,
+                        [item._id]: true }"
+                    :style="getCustomBackground(item.empty, item._id)"
+                    @touchstart="showDetail(item._id)">
+                    <p v-if="!item.empty">
+                        {{ item.classInfo.course_name }}<br />
+                        @{{ '' + item.classInfo.class_location }}
+                    </p>
                 </div>
             </div>
         </div>
+        <s-detail :detail="activeId" :visible="showDetailFlag" @closer="parentsCloser" @newColor="newCustomColor"/>
     </div>
 </template>
 
 <script>
 import sHeader from '../partials/sHeader'
+import sDetail from '../partials/sDetail'
 import store from '../vuex/store'
 import renderer from '../lib/renderer'
 
@@ -36,7 +43,9 @@ export default {
             schedule: {},
             numberToChinese: ['一', '二', '三', '四', '五'],
             week_odd: 2,
-            lastTouches: []
+            custom: {},
+            activeId: '',
+            showDetailFlag: false
         }
     },
     async mounted () {
@@ -46,20 +55,88 @@ export default {
         }
 
         if (window.StatusBar) {
-            window.StatusBar.styleDefault()
+            window.StatusBar.styleBlackOpaque()
         }
+
+        // 获取单双周
+        let date = new Date()
+        let date2 = new Date(date.getFullYear(), 0, 1)
+        let today = Math.floor((date - date2) / (24 * 60 * 60 * 1000)) + 1
+        this.week_odd = ((Math.floor(today / 7) - 35) % 2 === 0) ? 2 : 1
+
+        // 载入个性化设置
+        this.loadCustomConfig()
 
         // 渲染课程表
         this.render()
+
+        if (window.navigator.splashscreen) {
+            window.navigator.splashscreen.hide()
+        }
     },
     methods: {
-        showDetail (params) {
-            if (!params._id) return
-            console.log(params._id)
+        showDetail (_id) {
+            if (!_id) return
+            this.activeId = _id
+            this.showDetailFlag = true
         },
         // 渲染函数
         render () {
             this.schedule = renderer(store.schedule, this.week_odd)
+        },
+        getCustomBackground (isEmpty, _id) {
+            if (!isEmpty) {
+                if (this.custom[_id] && this.custom[_id].style.background) {
+                    return {
+                        background: this.custom[_id].style.background
+                    }
+                } else {
+                    return {
+                        background: '#52596b'
+                    }
+                }
+            } else {
+                return {
+                    background: 'rgba(94, 142, 214, 0.05);'
+                }
+            }
+        },
+        loadCustomConfig () {
+            const custom = window.localStorage.getItem('custom')
+            if (custom) {
+                // console.log(JSON.parse(custom))
+                this.custom = JSON.parse(custom)
+            } else {
+                window.localStorage.setItem('custom', JSON.stringify({}))
+            }
+        },
+        parentsCloser () {
+            this.showDetailFlag = false
+        },
+        newCustomColor (color, _id) {
+            if (!this.custom[_id]) {
+                this.custom[_id] = {
+                    style: {
+                        background: color
+                    },
+                    classInfo: {}
+                }
+            } else {
+                if (this.custom[_id].style) {
+                    this.custom[_id].style.background = color
+                } else {
+                    this.custom[_id].style = {
+                        background: color
+                    }
+                }
+            }
+
+            this.render()
+
+            window.localStorage.setItem('custom', JSON.stringify(this.custom))
+        },
+        switchSingleWeek () {
+            this.week_odd = (this.week_odd === 2) ? 1 : 2
         }
     },
     watch: {
@@ -68,7 +145,8 @@ export default {
         }
     },
     components: {
-        sHeader
+        sHeader,
+        sDetail
     }
 }
 </script>
