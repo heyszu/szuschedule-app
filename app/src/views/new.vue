@@ -19,7 +19,8 @@
                         ['type' + item.classInfo.section_order]: true,
                         [item._id]: true }"
                     :style="getCustomBackground(item.empty, item._id)"
-                    @touchstart="showDetail(item._id)">
+                    @touchmove="showDetail(item._id, $event)"
+                    @touchstart="taped(item._id, $event)">
                     <p v-if="!item.empty">
                         {{ item.classInfo.course_name }}<br />
                         @{{ '' + item.classInfo.class_location }}
@@ -45,7 +46,9 @@ export default {
             week_odd: 2,
             custom: {},
             activeId: '',
-            showDetailFlag: false
+            showDetailFlag: false,
+            isTaped: false,
+            isMoved: 0
         }
     },
     async mounted () {
@@ -75,10 +78,25 @@ export default {
         }
     },
     methods: {
-        showDetail (_id) {
+        showDetail (_id, e) {
             if (!_id) return
-            this.activeId = _id
-            this.showDetailFlag = true
+            this.isMoved++
+        },
+        taped (_id, e) {
+            if (!_id) return
+            if (!this.isTaped) {
+                this.isTaped = true
+                this.isMoved = 0
+            }
+            this.isMoved++
+            setTimeout(() => {
+                if (this.isTaped && this.isMoved <= 2) {
+                    this.activeId = _id
+                    this.showDetailFlag = true
+                    this.isMoved = 0
+                }
+                this.isTaped = false
+            }, 70)
         },
         // 渲染函数
         render () {

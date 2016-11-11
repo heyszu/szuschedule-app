@@ -4,7 +4,7 @@
             <div class="main-content">
                 <div class="colorPicker">
                     <div class="itemContainer" v-for="color in colors"
-                        v-tap="{ methods: changeColor, color: color }">
+                        @touchstart="changeColor(color)">
                         <span class="item"
                             :style="{ background: color }"
                             :class="{ checked: isActive(color) }">
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class="mask" v-show="visible" v-tap="{ methods: closeDetail }"></div>
+        <div class="mask" v-show="visible" @touchstart="closeDetail"></div>
     </div>
 </template>
 
@@ -77,20 +77,20 @@ export default {
                 }
             }
         },
-        changeColor (params) {
+        changeColor (color) {
             if (!this.custom[this.detail]) {
                 this.custom[this.detail] = {
                     style: {
-                        background: params.color
+                        background: color
                     },
                     classInfo: {}
                 }
             } else {
                 if (this.custom[this.detail].style) {
-                    this.custom[this.detail].style.background = params.color
+                    this.custom[this.detail].style.background = color
                 } else {
                     this.custom[this.detail].style = {
-                        background: params.color
+                        background: color
                     }
                 }
             }
@@ -99,7 +99,7 @@ export default {
             this.colors.reverse().reverse()
 
             // 应用设置
-            this.emitCustomColor(params.color)
+            this.emitCustomColor(color)
 
             // 关闭详情
             this.closeDetail()
