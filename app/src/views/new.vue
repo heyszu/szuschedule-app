@@ -84,6 +84,7 @@ export default {
             this.tapInfo[1] = e.touches[0].pageY
         },
         tapedEnd (_id, e) {
+            if (!_id) return
             if (e.changedTouches[0].pageX === this.tapInfo[0] &&
                 e.changedTouches[0].pageY === this.tapInfo[1]) {
                 this.activeId = _id

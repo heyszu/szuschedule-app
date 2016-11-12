@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import http from 'axios'
 import config from '../config'
 
 export default {
@@ -39,7 +40,7 @@ export default {
         }
     },
     methods: {
-        getSchedule () {
+        async getSchedule () {
             if (!this.stuInfo.stu_no) {
                 navigator.notification.alert('请输入学号！', function () {}, '阿偶', '好吧...')
                 return
@@ -52,17 +53,22 @@ export default {
                 navigator.notification.alert('请输入正确的学号！', function () {}, '阿偶', '好吧...')
                 return
             }
-            this.$http.post(config.api + '/scheduleprelogin', {
-                stu_no: this.stuInfo.stu_no,
-                stu_name: this.stuInfo.stu_name
-            }).then(res => {
+
+            try {
+                const res = await http.post(config.api + '/scheduleprelogin', {
+                    stu_no: this.stuInfo.stu_no,
+                    stu_name: this.stuInfo.stu_name
+                })
+
                 if (res.data.status === 200) {
+                    // Save login data
                     window.localStorage.setItem('schedule', JSON.stringify(res.data.data.schedule))
                     window.localStorage.setItem('preLoginState', JSON.stringify({
                         stu_no: this.stuInfo.stu_no,
                         stu_name: this.stuInfo.stu_name
                     }))
                     window.localStorage.setItem('isPreLogin', true)
+
                     this.$store.dispatch('updatePreLoginState', {
                         isPreLogin: true,
                         preLoginState: {
@@ -71,16 +77,20 @@ export default {
                         },
                         schedule: res.data.data.schedule
                     })
+
+                    // Jump to index
                     this.$router.push({ name: 'index' })
-                    return
                 } else if (res.data.status === 201) {
                     navigator.notification.alert('学号和姓名不匹配！', function () {}, '阿偶', '好吧...')
                 } else {
                     navigator.notification.alert('未知错误', function () {}, '阿偶', '好吧...')
                 }
-            }, e => {
-                navigator.notification.alert('网络无连接或服务器错误，请稍后重试。', function () {}, '网络错误', '好吧...')
-            })
+            } catch (error) {
+                console.log(error)
+                navigator.notification.alert('网络无连接或服务器错误，请稍后重试。', error => {
+                    console.log(error)
+                }, '网络错误', '好吧...')
+            }
         }
     }
 }
