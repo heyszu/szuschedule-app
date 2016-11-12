@@ -21,7 +21,6 @@
     <preference name="StatusBarBackgroundColor" value="#FFFFFF" />
     <preference name="StatusBarStyle" value="blackopaque" />
     <preference name="AutoHideSplashScreen" value="false" />
-    <preference name="xwalkMode" value="lite" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon src="res/android/icon36.png" density="ldpi" />
