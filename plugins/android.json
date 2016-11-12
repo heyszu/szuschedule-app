@@ -22,6 +22,14 @@
         "cordova-plugin-wechat": {
             "WECHATAPPID": "12er",
             "PACKAGE_NAME": "cn.iszu.szuhelper"
+        },
+        "cordova-plugin-crosswalk-webview": {
+            "XWALK_VERSION": "22+",
+            "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
+            "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
+            "XWALK_MODE": "embedded",
+            "XWALK_MULTIPLEAPK": "true",
+            "PACKAGE_NAME": "com.iszucn.szuschedule"
         }
     },
     "dependent_plugins": {}

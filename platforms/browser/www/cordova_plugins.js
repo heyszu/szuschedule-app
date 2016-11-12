@@ -73,7 +73,8 @@ module.exports.metadata =
     "cordova-plugin-browsersync": "0.1.1",
     "cordova-plugin-dialogs": "1.3.0",
     "cordova-plugin-statusbar": "2.2.0",
-    "cordova-plugin-wechat": "1.3.0"
+    "cordova-plugin-wechat": "1.3.0",
+    "cordova-plugin-crosswalk-webview": "2.2.0"
 }
 // BOTTOM OF METADATA
 });
