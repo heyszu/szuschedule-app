@@ -47,8 +47,6 @@ export default {
             custom: {},
             activeId: '',
             showDetailFlag: false,
-            isTaped: false,
-            isMoved: 0,
             tapInfo: [0, 0]
         }
     },
