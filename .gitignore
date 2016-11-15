@@ -11,3 +11,8 @@ npm-debug.log
 
 # Others
 .DS_Store
+
+# Generate file
+app/dist/
+www/
+platforms/ios/www/
