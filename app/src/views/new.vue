@@ -64,7 +64,7 @@ export default {
         let date = new Date()
         let date2 = new Date(date.getFullYear(), 0, 1)
         let today = Math.floor((date - date2) / (24 * 60 * 60 * 1000)) + 1
-        this.week_odd = ((Math.floor(today / 7) - 35) % 2 === 0) ? 2 : 1
+        this.week_odd = ((Math.floor(today / 7) - 34) % 2 === 0) ? 2 : 1
 
         // 载入个性化设置
         this.loadCustomConfig()
