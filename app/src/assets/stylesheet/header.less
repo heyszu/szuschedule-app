@@ -1,0 +1,105 @@
+* {
+    display: flex;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 76px;
+
+    background: #FFF;
+
+    color: #333;
+
+    flex-direction: column;
+
+    z-index: 100;
+
+    div {
+        padding: 10px;
+
+        align-items: center;
+
+        background: #FFF;
+    }
+
+    .leftBtn {
+        width: 60%;
+        padding-left: 20px;
+
+        font-size: 16px;
+
+        .material-icons {
+            font-size: 24px;
+        }
+    }
+
+    .rightBtn {
+        width: 40%;
+        padding-right: 20px;
+
+        justify-content: flex-end;
+
+        .material-icons {
+            font-size: 24px;
+        }
+
+        .menu {
+            position: absolute;
+
+            top: 20px;
+            right: 20px;
+            width: 150px;
+
+            padding: 8px 0;
+
+            background: #FFF;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,.4);
+
+            display: flex;
+            flex-direction: column;
+
+            transform: scale(0);
+            transform-origin: top right;
+            transition: all 200ms ease;
+
+            z-index: 13;
+
+            li {
+                width: 100%;
+                
+                padding: 13px 18px;
+
+                font-size: 14px;
+                line-height: 14px;
+
+                display: block;
+
+                &:active {
+                    background: rgba(0,0,0,.1)
+                }
+            }
+        }
+
+        .menuOpen {
+            transform: scale(1);
+        }
+    }
+
+    .mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        background: transparent;
+
+        z-index: 12;
+    }
+}
