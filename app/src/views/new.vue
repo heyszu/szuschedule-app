@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import http from 'axios'
+import config from '../config'
 import sHeader from '../partials/sHeader'
 import sDetail from '../partials/sDetail'
 import store from '../vuex/store'
@@ -61,10 +63,7 @@ export default {
         }
 
         // 获取单双周
-        let date = new Date()
-        let date2 = new Date(date.getFullYear(), 0, 1)
-        let today = Math.floor((date - date2) / (24 * 60 * 60 * 1000)) + 1
-        this.week_odd = ((Math.floor(today / 7) - 34) % 2 === 0) ? 2 : 1
+        this.weekOddGen()
 
         // 载入个性化设置
         this.loadCustomConfig()
@@ -75,6 +74,13 @@ export default {
         if (window.navigator.splashscreen) {
             window.navigator.splashscreen.hide()
         }
+
+        document.addEventListener('deviceready', function () {
+            // 统计
+            if (window.device) {
+                http.post(config.api + '/analysis/devices', window.device)
+            }
+        }, false)
     },
     methods: {
         tapedStart (e) {
@@ -146,6 +152,12 @@ export default {
         },
         switchSingleWeek () {
             this.week_odd = (this.week_odd === 2) ? 1 : 2
+        },
+        weekOddGen () {
+            let date = new Date()
+            let date2 = new Date(date.getFullYear(), 0, 1)
+            let today = Math.floor((date - date2) / (24 * 60 * 60 * 1000)) + 1
+            this.week_odd = ((Math.floor(today / 7) - 34) % 2 === 0) ? 2 : 1
         }
     },
     watch: {

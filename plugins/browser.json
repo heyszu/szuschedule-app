@@ -22,7 +22,23 @@
         },
         "cordova-plugin-crosswalk-webview": {
             "PACKAGE_NAME": "com.iszucn.szuschedule"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.iszucn.szuschedule"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.iszucn.szuschedule"
+        },
+        "de.appplant.cordova.plugin.local-notification": {
+            "PACKAGE_NAME": "com.iszucn.szuschedule"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.iszucn.szuschedule"
+        },
+        "cordova-plugin-app-event": {
+            "PACKAGE_NAME": "com.iszucn.szuschedule"
+        }
+    }
 }

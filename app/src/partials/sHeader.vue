@@ -8,7 +8,6 @@
             <div class="rightBtn">
                 <i class="material-icons" @touchstart="toggleMenu">more_vert</i>
                 <div class="menu" :class="{ menuOpen: menuVisible }">
-                    <!--<li @touchstart="backup">备份/恢复</li>-->
                     <li @touchstart="logout">退出账号</li>
                     <li @touchstart="about">关于</li>
                 </div>
@@ -27,18 +26,16 @@ export default {
             menuVisible: false
         }
     },
-    mouted () {
-        const android = setInterval(() => {
-            /*
+    created () {
+        document.addEventListener('deviceready', () => {
             if (window.device) {
+                console.log(window.device)
+                console.log(window.device.platform)
                 if (window.device.platform === 'Android') {
                     this.isAndroid = true
                 }
-                clearInterval(android)
             }
-            */
-            clearInterval(android)
-        }, 15)
+        }, false)
     },
     methods: {
         switchSingleWeek () {
@@ -46,10 +43,6 @@ export default {
         },
         toggleMenu () {
             this.menuVisible = !this.menuVisible
-        },
-        backup () {
-            console.log('backup')
-            this.toggleMenu()
         },
         logout () {
             this.toggleMenu()
@@ -59,7 +52,7 @@ export default {
         },
         about () {
             this.toggleMenu()
-            navigator.notification.alert(`深大课表是由“这很深大”公众号团队开发的一款课表查询软件，仅供深大学生使用。\n版本号: v0.2.5 preview\n作者: Jason <jason@iszu.cn>`, function () {}, '关于深大课表', '知道了')
+            navigator.notification.alert(`深大课表是由“这很深大”公众号团队开发的一款课表查询软件，仅供深大学生使用。\n版本号: v1.0\n作者: Jason <jason@iszu.cn>`, function () {}, '关于深大课表', '知道了')
         }
     }
 }
