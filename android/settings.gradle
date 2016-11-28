@@ -1,0 +1,3 @@
+rootProject.name = 'iszurn'
+
+include ':app'
