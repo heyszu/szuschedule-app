@@ -61,10 +61,13 @@ export default Object.assign({
         backgroundColor: '#FFFFFF'
     },
     header: {
-        paddingTop: 32,
+        paddingTop: 20,
+        paddingLeft: 20,
+        paddingRight: 20,
         height: 72,
         flexDirection: 'row',
-        justifyContent: 'center'
+        justifyContent: 'space-between',
+        alignItems: 'center'
     },
     textStyle: {
         fontSize: 18,

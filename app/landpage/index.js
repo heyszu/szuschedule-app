@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import { Actions } from 'react-native-router-flux'
+import Icon from 'react-native-vector-icons/Foundation'
 
 import importStyle from './style'
 const style = StyleSheet.create(importStyle)
 
 // test Data
 import schedule from '../test/schedule'
-
 
 const numberToChinese = ['一', '二', '三', '四', '五']
 
@@ -16,7 +16,9 @@ export default class landpage extends Component {
     return (
       <View style={ style.mainView }>
         <View style={ style.header }>
+          <Icon name="page-multiple" size={ 18 } color="#444" />
           <Text style={ style.textStyle }>单周（第13周）</Text>
+          <Icon name="widget" size={ 24 } color="#444" />
         </View>
         <ScrollView style={{ flex: 1 }}>
           <View style={ style.schedule }>
