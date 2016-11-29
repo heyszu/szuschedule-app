@@ -861,7 +861,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.iszurn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iszucn.szuchedule;
 				PRODUCT_NAME = iszurn;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -885,7 +885,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.iszurn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iszucn.szuchedule;
 				PRODUCT_NAME = iszurn;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
